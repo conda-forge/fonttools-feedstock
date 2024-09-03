@@ -30,6 +30,7 @@ requirements:
   host:
     - cython
     - pip
+    - setuptools
     - python
   run:
     - python
