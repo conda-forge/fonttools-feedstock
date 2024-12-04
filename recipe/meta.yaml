@@ -36,7 +36,7 @@ requirements:
     - pip
     - setuptools
     - python {{ python_min }}  # [use_noarch]
-    - python {{ python_min }}  # [not use_noarch]
+    - python  # [not use_noarch]
   run:
     - python >={{ python_min }}  # [use_noarch]
     - python >={{ python_min }}  # [not use_noarch]
