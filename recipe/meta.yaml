@@ -39,7 +39,7 @@ requirements:
     - python  # [not use_noarch]
   run:
     - python >={{ python_min }}  # [use_noarch]
-    - python >={{ python_min }}  # [not use_noarch]
+    - python # [not use_noarch]
     - brotli
     - munkres
     - unicodedata2 >=15.1.0  # [use_noarch or py<=312]
