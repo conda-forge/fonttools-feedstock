@@ -11,7 +11,7 @@ source:
   sha256: 3983313c2a04d6cc1fe9251f8fc647754cf49a61dac6cb1e7249ae67afaafc45
 
 build:
-  number: 0
+  number: 1
   noarch: python  # [use_noarch]
   track_features:
     - fonttools_no_compile    # [use_noarch]
@@ -35,11 +35,11 @@ requirements:
     - cython
     - pip
     - setuptools
-    - python >=3.8  # [use_noarch]
-    - python        # [not use_noarch]
+    - python {{ python_min }}  # [use_noarch]
+    - python {{ python_min }}  # [not use_noarch]
   run:
-    - python >=3.8  # [use_noarch]
-    - python        # [not use_noarch]
+    - python >={{ python_min }}  # [use_noarch]
+    - python >={{ python_min }}  # [not use_noarch]
     - brotli
     - munkres
     - unicodedata2 >=15.1.0  # [use_noarch or py<=312]
@@ -58,6 +58,7 @@ test:
     # pyftmerge has no help option
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/fonttools/fonttools
