@@ -1,5 +1,5 @@
 {% set name = "fonttools" %}
-{% set version = "4.58.2" %}
+{% set version = "4.58.4" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/fonttools-{{ version }}.tar.gz
-  sha256: 4b491ddbfd50b856e84b0648b5f7941af918f6d32f938f18e62b58426a8d50e2
+  sha256: 928a8009b9884ed3aae17724b960987575155ca23c6f0b8146e400cc9e0d44ba
 
 build:
   number: 0
