@@ -11,7 +11,7 @@ source:
   sha256: 3cb57e6600ca77c0b1729cf8adc23bc0652633a37f18cfa934d9c7bc3de25519
 
 build:
-  number: 0
+  number: 1
   noarch: python  # [use_noarch]
   track_features:
     - fonttools_no_compile    # [use_noarch]
