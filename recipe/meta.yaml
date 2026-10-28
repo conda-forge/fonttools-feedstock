@@ -1,5 +1,5 @@
 {% set name = "fonttools" %}
-{% set version = "4.67.0" %}
+{% set version = "4.68.0" %}
 
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/fonttools-{{ version }}.tar.gz
-  sha256: 3cb57e6600ca77c0b1729cf8adc23bc0652633a37f18cfa934d9c7bc3de25519
+  sha256: 73294e233070f71e2b3653b6bd8564af676d57f26d075761fb06d1ab2e4a7a5d
 
 build:
-  number: 1
+  number: 0
   noarch: python  # [use_noarch]
   track_features:
     - fonttools_no_compile    # [use_noarch]
