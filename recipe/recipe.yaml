@@ -1,0 +1,105 @@
+schema_version: 1
+
+context:
+  name: fonttools
+  version: "4.68.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/fonttools-${{ version }}.tar.gz
+  sha256: 73294e233070f71e2b3653b6bd8564af676d57f26d075761fb06d1ab2e4a7a5d
+
+build:
+  number: 1
+  # pure-Python fallback (built on linux-64 only) for platforms/pythons without a compiled build
+  noarch: ${{ "python" if use_noarch }}
+  variant:
+    down_prioritize_variant: ${{ 1 if use_noarch else 0 }}
+  script:
+    - if: use_noarch
+      then: export FONTTOOLS_WITH_CYTHON=0
+    - ${{ PYTHON }} -m pip install . --no-deps -vv
+  python:
+    entry_points:
+      - fonttools = fontTools.__main__:main
+      - ttx = fontTools.ttx:main
+      - pyftsubset = fontTools.subset:main
+      - pyftmerge = fontTools.merge:main
+
+requirements:
+  build:
+    - if: build_platform != target_platform and not use_noarch
+      then: python
+    - if: build_platform != target_platform
+      then:
+        - cross-python_${{ target_platform }}
+        - cython
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+  host:
+    - cython
+    - pip
+    - setuptools
+    - if: use_noarch
+      then: python ${{ python_min }}.*
+      else: python
+  run:
+    - if: use_noarch
+      then: python >=${{ python_min }}
+      else: python
+    - brotli
+    - munkres
+    - if: use_noarch or match(python, "<=3.12")
+      then: unicodedata2 >=15.1.0
+
+tests:
+  - if: use_noarch
+    then:
+      python:
+        imports:
+          - fontTools
+          - fontTools.ttLib
+          - fontTools.cffLib
+        pip_check: true
+        python_version: ${{ python_min }}.*
+    else:
+      python:
+        imports:
+          - fontTools
+          - fontTools.ttLib
+          - fontTools.cffLib
+        pip_check: true
+  - requirements:
+      run:
+        - if: use_noarch
+          then: python ${{ python_min }}.*
+    script:
+      - fonttools --help
+      - fonttools subset --help
+      - ttx -h
+      - pyftsubset --help
+      # pyftmerge has no help option
+
+about:
+  license: MIT
+  license_file: LICENSE
+  summary: fontTools is a library for manipulating fonts, written in Python.
+  description: |
+    fontTools is a library for manipulating fonts, written in Python. The
+    project includes the TTX tool, that can convert TrueType and OpenType
+    fonts to and from an XML text format, which is also called TTX. It
+    supports TrueType, OpenType, AFM and to an extent Type 1 and some
+    Mac-specific formats. The project has a BSD-style open-source licence.
+  homepage: https://github.com/fonttools/fonttools
+  repository: https://github.com/fonttools/fonttools
+  documentation: https://fonttools.readthedocs.io/
+
+extra:
+  recipe-maintainers:
+    - CJ-Wright
+    - dopplershift
+    - tacaswell
+    - carlodri

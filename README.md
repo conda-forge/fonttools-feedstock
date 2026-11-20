@@ -11,14 +11,13 @@ Summary: fontTools is a library for manipulating fonts, written in Python.
 
 Development: https://github.com/fonttools/fonttools
 
-Documentation: https://groups.google.com/forum/#!forum/fonttools
+Documentation: https://fonttools.readthedocs.io/
 
 fontTools is a library for manipulating fonts, written in Python. The
 project includes the TTX tool, that can convert TrueType and OpenType
 fonts to and from an XML text format, which is also called TTX. It
 supports TrueType, OpenType, AFM and to an extent Type 1 and some
 Mac-specific formats. The project has a BSD-style open-source licence.
-
 
 Current build status
 ====================
@@ -287,6 +286,7 @@ Feedstock Maintainers
 =====================
 
 * [@CJ-Wright](https://github.com/CJ-Wright/)
+* [@carlodri](https://github.com/carlodri/)
 * [@dopplershift](https://github.com/dopplershift/)
 * [@tacaswell](https://github.com/tacaswell/)
 
