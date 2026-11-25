@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: fonttools
-  version: "4.68.0"
+  version: "4.69.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/fonttools-${{ version }}.tar.gz
-  sha256: 73294e233070f71e2b3653b6bd8564af676d57f26d075761fb06d1ab2e4a7a5d
+  sha256: d09a2ea8ed4c71ac52e789ba9313da3e26cee3f812400d7e8a8b3a38d0f98dfe
 
 build:
-  number: 2
+  number: 0
   # pure-Python fallback (built on linux-64 only) for platforms/pythons without a compiled build
   noarch: ${{ "python" if use_noarch }}
   variant:
